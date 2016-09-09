@@ -1,0 +1,2 @@
+# Springboot-Mybatis-Redis
+利用springboot配置方式集成Mybatis和Redis
