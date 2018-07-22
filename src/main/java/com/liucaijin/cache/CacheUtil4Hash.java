@@ -25,7 +25,7 @@ public class CacheUtil4Hash {
 
 	@SuppressWarnings("unchecked")
 	public static <T> void cache4Hash(final List<T> list, final String tableName, ICacheKey t1) {
-		
+
 		RedisSerializer keySerializer = redisTemplate.getKeySerializer();
 
 		Map<byte[], byte[]> map = new HashMap<byte[], byte[]>();
@@ -41,42 +41,40 @@ public class CacheUtil4Hash {
 				connection.hMSet(tableName.getBytes(), map);
 				return true;
 			}
-		},false,true);
+		}, false, true);
 		try {
-			
+
 		} catch (Exception e) {
 			System.out.println("缓存到redis失败");
 		}
 
 	}
-	
-	public  static<T>  List<T> get4HashFromRedis(final String tableName,List keys){
+
+	public static <T> List<T> get4HashFromRedis(final String tableName, List keys) {
 		List<T> result = new ArrayList<T>();
 		RedisSerializer keySerializer = redisTemplate.getKeySerializer();
 		HashOperations opsForHash = redisTemplate.opsForHash();
 		List<T> keystemp = new ArrayList<T>();
-		for(Object t:keys){
+		for (Object t : keys) {
 			keystemp.add((T) keySerializer.serialize(t));
 		}
-		
-		 		 
+
 		@SuppressWarnings("unchecked")
 		List<T> multiGet = opsForHash.values(tableName);
-		System.out.println("开始的大小："+multiGet.size());
-		if(multiGet.size()>0){
-			for(T o:multiGet){
-				if(o!=null){
+		System.out.println("开始的大小：" + multiGet.size());
+		if (multiGet.size() > 0) {
+			for (T o : multiGet) {
+				if (o != null) {
 					result.add(o);
 				}
 			}
-		} 
+		}
 		try {
-			
+
 		} catch (Exception e) {
 			System.out.println("从缓存中取数据失败");
-		} 
+		}
 		return result;
 	}
-	
-	
+
 }
