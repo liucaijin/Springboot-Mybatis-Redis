@@ -27,10 +27,8 @@ public class Bootstrap  extends SpringBootServletInitializer implements Embedded
 
 	@RequestMapping("/")
 	@ResponseBody
-	String home() {
-		System.out.println(":::::::::"+querySelect.queryCount());
-		
-		return "Hello World!";
+	String home() throws Exception { 
+		throw new Exception("我是可以封装成对象的异常消息");
 	}
 
 	public static void main(String[] args) throws Exception {
