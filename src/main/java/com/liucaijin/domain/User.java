@@ -37,6 +37,8 @@ public class User implements Serializable{
 	public int getAge() {
 		return age;
 	}
+	
+	public void testgit(){}
 
 	public void setAge(int age) {
 		this.age = age;
