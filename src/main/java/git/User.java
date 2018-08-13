@@ -40,7 +40,11 @@ public class User implements Serializable{
 		return age;
 	}
 	
+ 
 	public void test(){}
+ 
+	public void test2(){}
+ 
 
 	public void setAge(int age) {
 		this.age = age;
